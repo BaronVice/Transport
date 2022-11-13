@@ -46,15 +46,20 @@ namespace Transport
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlSetTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 62);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -72,6 +77,7 @@ namespace Transport
             this.btnGetResult.TabIndex = 2;
             this.btnGetResult.Text = "Результат";
             this.btnGetResult.UseVisualStyleBackColor = true;
+            this.btnGetResult.Click += new System.EventHandler(this.btnGetResult_Click_1);
             // 
             // btnCallTable
             // 
@@ -110,7 +116,7 @@ namespace Transport
             this.pnlSetTable.Controls.Add(this.label3);
             this.pnlSetTable.Controls.Add(this.label2);
             this.pnlSetTable.Controls.Add(this.label1);
-            this.pnlSetTable.Location = new System.Drawing.Point(6, 243);
+            this.pnlSetTable.Location = new System.Drawing.Point(0, 0);
             this.pnlSetTable.Name = "pnlSetTable";
             this.pnlSetTable.Size = new System.Drawing.Size(963, 980);
             this.pnlSetTable.TabIndex = 0;
@@ -240,7 +246,7 @@ namespace Transport
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 101);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 214);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
@@ -248,17 +254,68 @@ namespace Transport
             this.dataGridView2.Size = new System.Drawing.Size(951, 92);
             this.dataGridView2.TabIndex = 5;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(6, 416);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.RowHeadersWidth = 62;
+            this.dataGridView3.RowTemplate.Height = 33;
+            this.dataGridView3.Size = new System.Drawing.Size(951, 441);
+            this.dataGridView3.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.Chocolate;
+            this.label5.Location = new System.Drawing.Point(284, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(416, 48);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Пункты потребления";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.Chocolate;
+            this.label6.Location = new System.Drawing.Point(277, 163);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(431, 48);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Пункты производства";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.Chocolate;
+            this.label7.Location = new System.Drawing.Point(215, 365);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(554, 48);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Затраты на транспортировку";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 978);
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.pnlSetTable);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCallTable);
             this.Controls.Add(this.btnGetResult);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(985, 1034);
             this.MinimumSize = new System.Drawing.Size(985, 1018);
@@ -269,7 +326,9 @@ namespace Transport
             this.pnlSetTable.ResumeLayout(false);
             this.pnlSetTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -292,6 +351,10 @@ namespace Transport
         private System.Windows.Forms.TextBox tbProduce;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
