@@ -34,6 +34,10 @@ namespace Transport
             this.btnCallTable = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlSetTable = new System.Windows.Forms.Panel();
+            this.tbConsume = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tbProduce = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.clearTable = new System.Windows.Forms.Button();
             this.goBack = new System.Windows.Forms.Button();
             this.btnSetSize = new System.Windows.Forms.Button();
@@ -41,8 +45,10 @@ namespace Transport
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlSetTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -50,9 +56,10 @@ namespace Transport
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 3);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(951, 854);
+            this.dataGridView1.Size = new System.Drawing.Size(951, 92);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnGetResult
@@ -92,6 +99,10 @@ namespace Transport
             // 
             // pnlSetTable
             // 
+            this.pnlSetTable.Controls.Add(this.tbConsume);
+            this.pnlSetTable.Controls.Add(this.panel2);
+            this.pnlSetTable.Controls.Add(this.tbProduce);
+            this.pnlSetTable.Controls.Add(this.panel1);
             this.pnlSetTable.Controls.Add(this.clearTable);
             this.pnlSetTable.Controls.Add(this.goBack);
             this.pnlSetTable.Controls.Add(this.btnSetSize);
@@ -99,10 +110,52 @@ namespace Transport
             this.pnlSetTable.Controls.Add(this.label3);
             this.pnlSetTable.Controls.Add(this.label2);
             this.pnlSetTable.Controls.Add(this.label1);
-            this.pnlSetTable.Location = new System.Drawing.Point(0, 0);
+            this.pnlSetTable.Location = new System.Drawing.Point(6, 243);
             this.pnlSetTable.Name = "pnlSetTable";
             this.pnlSetTable.Size = new System.Drawing.Size(963, 980);
             this.pnlSetTable.TabIndex = 0;
+            // 
+            // tbConsume
+            // 
+            this.tbConsume.BackColor = System.Drawing.SystemColors.Control;
+            this.tbConsume.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbConsume.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbConsume.Location = new System.Drawing.Point(651, 229);
+            this.tbConsume.MaxLength = 2;
+            this.tbConsume.Name = "tbConsume";
+            this.tbConsume.Size = new System.Drawing.Size(262, 48);
+            this.tbConsume.TabIndex = 10;
+            this.tbConsume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbConsume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbConsume_KeyPress);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel2.Location = new System.Drawing.Point(651, 345);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(262, 3);
+            this.panel2.TabIndex = 9;
+            // 
+            // tbProduce
+            // 
+            this.tbProduce.BackColor = System.Drawing.SystemColors.Control;
+            this.tbProduce.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbProduce.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbProduce.Location = new System.Drawing.Point(651, 297);
+            this.tbProduce.MaxLength = 2;
+            this.tbProduce.Name = "tbProduce";
+            this.tbProduce.Size = new System.Drawing.Size(262, 48);
+            this.tbProduce.TabIndex = 8;
+            this.tbProduce.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbProduce.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProduce_KeyPress);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(651, 277);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(262, 3);
+            this.panel1.TabIndex = 7;
             // 
             // clearTable
             // 
@@ -168,7 +221,7 @@ namespace Transport
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(35, 300);
+            this.label2.Location = new System.Drawing.Point(35, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(604, 48);
             this.label2.TabIndex = 1;
@@ -178,17 +231,29 @@ namespace Transport
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(35, 232);
+            this.label1.Location = new System.Drawing.Point(35, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(622, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Количество пунктов производства:";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 101);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 33;
+            this.dataGridView2.Size = new System.Drawing.Size(951, 92);
+            this.dataGridView2.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 978);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.pnlSetTable);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCallTable);
@@ -203,6 +268,7 @@ namespace Transport
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlSetTable.ResumeLayout(false);
             this.pnlSetTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,6 +287,11 @@ namespace Transport
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbConsume;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox tbProduce;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
