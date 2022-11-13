@@ -21,6 +21,17 @@ namespace Transport.CustomTable
             }
         }
 
+        public static void buildTables(List<GridTable> gridTables)
+        {
+            clearTables(gridTables);
+
+            foreach (GridTable gridTable in gridTables)
+            {
+                setTable(gridTable);
+            }
+            decorateTable(gridTables[2]);
+        }
+
         public static void setTable(GridTable gridTable)
         {
             int width = Math.Max(951 / gridTable.columns, 80);

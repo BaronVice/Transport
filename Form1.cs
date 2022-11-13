@@ -23,6 +23,7 @@ namespace Transport
         {
             InitializeComponent();
             btnGetResult.Enabled = false;
+            clearTable.Enabled = false;
             pnlSetTable.Hide();
             dataGridView1.AllowUserToAddRows = false;
             dataGridView2.AllowUserToAddRows = false;
@@ -79,23 +80,19 @@ namespace Transport
             tableExpences.columns = Int32.Parse(tbProduce.Text) + 1;
             tableExpences.rows = Int32.Parse(tbConsume.Text) + 1;
 
-            TableManip.clearTables(gridTables);
-
-            foreach(GridTable gridTable in gridTables)
-            {
-                TableManip.setTable(gridTable);
-            }
+            TableManip.buildTables(gridTables);
 
             btnGetResult.Enabled = true;
+            clearTable.Enabled = true;
             pnlSetTable.Hide();
 
-            TableManip.decorateTable(tableExpences);
 
         }
 
         private void clearTable_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Clear");
+            TableManip.buildTables(gridTables);
             pnlSetTable.Hide();
         }
 
