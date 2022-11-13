@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Transport.CustomTable;
 
 namespace Transport
 {
     public partial class Form1 : Form
     {
+
+        List<GridTable> gridTables = new List<GridTable>(3);
+        GridTable tableConsume = new GridTable();
+        GridTable tableProduce = new GridTable();
+        GridTable tableExpences = new GridTable();
+
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +28,16 @@ namespace Transport
             dataGridView2.AllowUserToAddRows = false;
             dataGridView3.AllowUserToAddRows = false;
             dataGridView3.ColumnHeadersVisible = false;
+
+            tableConsume.setArguments(dataGridView1, 3, 1, "A");
+            tableProduce.setArguments(dataGridView2, 4, 1, "B");
+            tableExpences.setArguments(dataGridView3, 4, 5, "Prices");
+
+            gridTables.Add(tableConsume);
+            gridTables.Add(tableProduce);
+            gridTables.Add(tableExpences);
         }
+
 
         private void btnCallTable_Click_1(object sender, EventArgs e)
         {
@@ -38,33 +54,42 @@ namespace Transport
             Application.Exit();
         }
 
-        private void btnSetSize_Click(object sender, EventArgs e)
+        private bool checkInput()
         {
             if (tbProduce.TextLength == 0 || tbConsume.TextLength == 0)
             {
                 MessageBox.Show("Какой-то аргумент не задан", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
             if (Int32.Parse(tbConsume.Text) == 0 || Int32.Parse(tbProduce.Text) == 0)
             {
                 MessageBox.Show("Значения должны быть больше 0", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
+            return true;
+        }
 
+        private void btnSetSize_Click(object sender, EventArgs e)
+        {
+            if (!checkInput())
+                return;
 
-            List<DataGridView> grids = new List<DataGridView>();
-            grids.Add(dataGridView1);
-            grids.Add(dataGridView2);
-            grids.Add(dataGridView3);
+            tableConsume.columns = Int32.Parse(tbConsume.Text);
+            tableProduce.columns = Int32.Parse(tbProduce.Text);
+            tableExpences.columns = Int32.Parse(tbProduce.Text) + 1;
+            tableExpences.rows = Int32.Parse(tbConsume.Text) + 1;
 
-            TableManip.clearTables(grids);
+            TableManip.clearTables(gridTables);
 
-            TableManip.setTable(dataGridView1, Int32.Parse(tbConsume.Text), 1, "A");
-            TableManip.setTable(dataGridView2, Int32.Parse(tbProduce.Text), 1, "B");
-            TableManip.setTable(dataGridView3, Int32.Parse(tbProduce.Text), Int32.Parse(tbConsume.Text), "Prices");
+            foreach(GridTable gridTable in gridTables)
+            {
+                TableManip.setTable(gridTable);
+            }
 
             btnGetResult.Enabled = true;
             pnlSetTable.Hide();
+
+            TableManip.decorateTable(tableExpences);
 
         }
 
@@ -96,37 +121,5 @@ namespace Transport
         }
 
 
-    }
-
-    public class TableManip
-    {
-        private static void clearChosenTable(DataGridView grid)
-        {
-            grid.Columns.Clear();
-            grid.Rows.Clear();
-            grid.Refresh();
-        }
-
-        public static void clearTables(List<DataGridView> grids)
-        {
-            foreach (DataGridView grid in grids)
-            {
-                clearChosenTable(grid);
-            }
-        }
-
-        public static void setTable(DataGridView grid, int columns, int rows, string columnLetter)
-        {
-            int width = Math.Max(951 / columns, 80);
-            for (int i = 0; i < columns; i++)
-            {
-                grid.Columns.Add("column" + columnLetter + (i + 1).ToString(), columnLetter + (i + 1).ToString());
-                grid.Columns[i].Width = width;
-            }
-            for (int i = 0; i < rows; i++)
-            {
-                grid.Rows.Add();
-            }
-        }
     }
 }

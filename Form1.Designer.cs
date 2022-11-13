@@ -171,7 +171,7 @@ namespace Transport
             this.clearTable.Name = "clearTable";
             this.clearTable.Size = new System.Drawing.Size(951, 110);
             this.clearTable.TabIndex = 6;
-            this.clearTable.Text = "Очистить текущую таблицу";
+            this.clearTable.Text = "Очистить значения таблиц";
             this.clearTable.UseVisualStyleBackColor = true;
             this.clearTable.Click += new System.EventHandler(this.clearTable_Click);
             // 
