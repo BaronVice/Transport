@@ -48,7 +48,7 @@ namespace Transport.CustomTable
 
         public static void decorateTable(GridTable gridTable)
         {
-            gridTable.grid[0, 0].Value = "A/B";
+            gridTable.grid[0, 0].Value = "A\\B";
 
             for (int i = 1; i < gridTable.columns; i++)
             {

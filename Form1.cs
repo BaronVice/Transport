@@ -25,13 +25,10 @@ namespace Transport
             btnGetResult.Enabled = false;
             clearTable.Enabled = false;
             pnlSetTable.Hide();
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToAddRows = false;
             dataGridView3.ColumnHeadersVisible = false;
 
-            tableConsume.setArguments(dataGridView1, 3, 1, "A");
-            tableProduce.setArguments(dataGridView2, 4, 1, "B");
+            tableConsume.setArguments(dataGridView1, 3, 1, "B");
+            tableProduce.setArguments(dataGridView2, 4, 1, "A");
             tableExpences.setArguments(dataGridView3, 4, 5, "Prices");
 
             gridTables.Add(tableConsume);
@@ -43,6 +40,7 @@ namespace Transport
         private void btnCallTable_Click_1(object sender, EventArgs e)
         {
             pnlSetTable.Show();
+            tbProduce.Focus();
         }
 
         private void btnGetResult_Click_1(object sender, EventArgs e)
@@ -77,8 +75,8 @@ namespace Transport
 
             tableConsume.columns = Int32.Parse(tbConsume.Text);
             tableProduce.columns = Int32.Parse(tbProduce.Text);
-            tableExpences.columns = Int32.Parse(tbProduce.Text) + 1;
-            tableExpences.rows = Int32.Parse(tbConsume.Text) + 1;
+            tableExpences.rows = Int32.Parse(tbProduce.Text) + 1;
+            tableExpences.columns = Int32.Parse(tbConsume.Text) + 1;
 
             TableManip.buildTables(gridTables);
 
@@ -117,6 +115,20 @@ namespace Transport
             }
         }
 
+        private void tbProduce_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (int)Keys.Enter)
+            {
+                tbConsume.Focus();
+            }
+        }
 
+        private void tbConsume_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (int)Keys.Enter)
+            {
+                btnSetSize.PerformClick();
+            }
+        }
     }
 }

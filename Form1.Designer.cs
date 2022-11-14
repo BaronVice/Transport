@@ -58,8 +58,12 @@ namespace Transport
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 62);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 214);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -126,12 +130,13 @@ namespace Transport
             this.tbConsume.BackColor = System.Drawing.SystemColors.Control;
             this.tbConsume.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbConsume.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbConsume.Location = new System.Drawing.Point(651, 229);
+            this.tbConsume.Location = new System.Drawing.Point(651, 297);
             this.tbConsume.MaxLength = 2;
             this.tbConsume.Name = "tbConsume";
             this.tbConsume.Size = new System.Drawing.Size(262, 48);
             this.tbConsume.TabIndex = 10;
             this.tbConsume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbConsume.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbConsume_KeyDown);
             this.tbConsume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbConsume_KeyPress);
             // 
             // panel2
@@ -147,12 +152,13 @@ namespace Transport
             this.tbProduce.BackColor = System.Drawing.SystemColors.Control;
             this.tbProduce.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbProduce.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbProduce.Location = new System.Drawing.Point(651, 297);
+            this.tbProduce.Location = new System.Drawing.Point(651, 229);
             this.tbProduce.MaxLength = 2;
             this.tbProduce.Name = "tbProduce";
             this.tbProduce.Size = new System.Drawing.Size(262, 48);
             this.tbProduce.TabIndex = 8;
             this.tbProduce.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbProduce.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbProduce_KeyDown);
             this.tbProduce.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProduce_KeyPress);
             // 
             // panel1
@@ -227,7 +233,7 @@ namespace Transport
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(35, 232);
+            this.label2.Location = new System.Drawing.Point(35, 300);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(604, 48);
             this.label2.TabIndex = 1;
@@ -237,7 +243,7 @@ namespace Transport
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(35, 300);
+            this.label1.Location = new System.Drawing.Point(35, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(622, 48);
             this.label1.TabIndex = 0;
@@ -245,8 +251,12 @@ namespace Transport
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 214);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 62);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
@@ -256,13 +266,17 @@ namespace Transport
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AllowUserToResizeColumns = false;
+            this.dataGridView3.AllowUserToResizeRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 416);
+            this.dataGridView3.Location = new System.Drawing.Point(6, 459);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 62;
             this.dataGridView3.RowTemplate.Height = 33;
-            this.dataGridView3.Size = new System.Drawing.Size(951, 441);
+            this.dataGridView3.Size = new System.Drawing.Size(951, 398);
             this.dataGridView3.TabIndex = 6;
             // 
             // label5
@@ -270,7 +284,7 @@ namespace Transport
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.Chocolate;
-            this.label5.Location = new System.Drawing.Point(284, 9);
+            this.label5.Location = new System.Drawing.Point(284, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(416, 48);
             this.label5.TabIndex = 7;
@@ -282,7 +296,7 @@ namespace Transport
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.Chocolate;
-            this.label6.Location = new System.Drawing.Point(277, 163);
+            this.label6.Location = new System.Drawing.Point(277, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(431, 48);
             this.label6.TabIndex = 8;
@@ -294,7 +308,7 @@ namespace Transport
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Chocolate;
-            this.label7.Location = new System.Drawing.Point(215, 365);
+            this.label7.Location = new System.Drawing.Point(215, 408);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(554, 48);
             this.label7.TabIndex = 9;
