@@ -130,5 +130,20 @@ namespace Transport
                 btnSetSize.PerformClick();
             }
         }
+
+        private void dataGridView2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            TableManip.checkCell(e);
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            TableManip.checkCell(e);
+        }
+
+        private void dataGridView3_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            TableManip.checkCell(e, true);
+        }
     }
 }

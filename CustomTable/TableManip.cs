@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Transport.CustomTable
 {
@@ -62,6 +64,20 @@ namespace Transport.CustomTable
 
             gridTable.grid.Rows[0].ReadOnly = true;
             gridTable.grid.Columns[0].ReadOnly = true;
+        }
+
+        public static void checkCell(DataGridViewCellValidatingEventArgs e, bool isThird = false)
+        {
+            bool forParse = Convert.ToString(e.FormattedValue).All(char.IsDigit);
+            
+            if (isThird && (e.RowIndex==0 || e.ColumnIndex == 0)){
+
+            }
+            else if (!forParse)
+            {
+                e.Cancel = true;
+            }
+
         }
     }
 }

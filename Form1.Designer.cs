@@ -70,6 +70,7 @@ namespace Transport
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(951, 92);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             // 
             // btnGetResult
             // 
@@ -263,6 +264,7 @@ namespace Transport
             this.dataGridView2.RowTemplate.Height = 33;
             this.dataGridView2.Size = new System.Drawing.Size(951, 92);
             this.dataGridView2.TabIndex = 5;
+            this.dataGridView2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView2_CellValidating);
             // 
             // dataGridView3
             // 
@@ -278,6 +280,7 @@ namespace Transport
             this.dataGridView3.RowTemplate.Height = 33;
             this.dataGridView3.Size = new System.Drawing.Size(951, 398);
             this.dataGridView3.TabIndex = 6;
+            this.dataGridView3.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView3_CellValidating);
             // 
             // label5
             // 
