@@ -27,9 +27,9 @@ namespace Transport
             pnlSetTable.Hide();
             dataGridView3.ColumnHeadersVisible = false;
 
-            tableConsume.setArguments(dataGridView1, 3, 1, "B");
-            tableProduce.setArguments(dataGridView2, 4, 1, "A");
-            tableExpences.setArguments(dataGridView3, 4, 5, "Prices");
+            tableConsume.setArguments(dataGridView1, 3, 1, "B", "Пункты потребления");
+            tableProduce.setArguments(dataGridView2, 4, 1, "A", "Пункты производства");
+            tableExpences.setArguments(dataGridView3, 4, 5, "Prices", "Затраты на транспортировку");
 
             gridTables.Add(tableConsume);
             gridTables.Add(tableProduce);
@@ -45,7 +45,10 @@ namespace Transport
 
         private void btnGetResult_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Nothing right now");
+            TableManip.checkIfFilled(tableProduce);
+            TableManip.checkIfFilled(tableConsume);
+            TableManip.checkIfFilled(tableExpences);
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -131,12 +134,12 @@ namespace Transport
             }
         }
 
-        private void dataGridView2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             TableManip.checkCell(e);
         }
 
-        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void dataGridView2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             TableManip.checkCell(e);
         }
