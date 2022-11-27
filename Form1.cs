@@ -45,9 +45,11 @@ namespace Transport
 
         private void btnGetResult_Click_1(object sender, EventArgs e)
         {
-            TableManip.checkIfFilled(tableProduce);
-            TableManip.checkIfFilled(tableConsume);
-            TableManip.checkIfFilled(tableExpences);
+            if(TableManip.checkIfFilled(tableProduce) && TableManip.checkIfFilled(tableConsume) && TableManip.checkIfFilled(tableExpences))
+            {
+                FindOptimal.fillSolutionTables(tableProduce, tableConsume, tableExpences);
+                FindOptimal.findSolution();
+            }
 
         }
 

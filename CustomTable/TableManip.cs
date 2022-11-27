@@ -84,7 +84,7 @@ namespace Transport.CustomTable
 
         }
 
-        public static void checkIfFilled(GridTable gridTable)
+        public static bool checkIfFilled(GridTable gridTable)
         {
             for (int i = 0; i < gridTable.columns; i++)
             {
@@ -93,10 +93,11 @@ namespace Transport.CustomTable
                     if (gridTable.grid[i, j].Value == null)
                     {
                         MessageBox.Show($"Найдено пустое поле в таблице \"{gridTable.name}\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        return false;
                     }
                 }
             }
+            return true;
         }
     }
 }
