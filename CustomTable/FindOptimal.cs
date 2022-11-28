@@ -16,12 +16,15 @@ namespace Transport.CustomTable
         private static List<int> potU = new List<int>();
         private static List<int> potV = new List<int>();
 
-        private static List<int> potUOutput = new List<int>();
-        private static List<int> potVOutput = new List<int>();
+        private static List<int> potUFinal = new List<int>();
+        private static List<int> potVFinal = new List<int>();
+
+        private static List<List<int>> relScore = new List<List<int>>();
 
         private static int tableColumns;
         private static int tableRows;
 
+        // Заполнение коллекций из таблиц
         public static void fillSolutionTables(GridTable A, GridTable B, GridTable Costs)
         {
             elementsOfProduce.Clear();
@@ -51,6 +54,7 @@ namespace Transport.CustomTable
             }
         }
 
+        // Сброс данных списка
         private static void reloadList(List<int> l, int length)
         {
             l.Clear();
@@ -58,6 +62,7 @@ namespace Transport.CustomTable
                 l.Add(0);
         }
 
+        // Сброс данных матрицы
         private static void reloadMatrix(List<List<int>> m)
         {
             m.Clear();
@@ -72,6 +77,7 @@ namespace Transport.CustomTable
             
         }
 
+        // Составление опорного плана
         public static void findSolution()
         {
             int currentMaximum = 0;
@@ -126,14 +132,27 @@ namespace Transport.CustomTable
                     }
         }
 
+        // Проверка на оптимальность
+        private static bool isOptimal()
+        {
+            for (int i = 0; i < tableRows; i++)
+                for (int j = 0; j < tableColumns; j++)
+                    if ((basisElements[i][j] == -1) && (relScore[i][j] < 0))
+                    {
+                        return false;
+                    }
+            return true;
+        }
+
+        // Нахождение оптимального решения
         public static void findOptimalSolution()
         {
             reloadList(potU, tableRows);
-            reloadList(potUOutput, tableRows);
+            reloadList(potUFinal, tableRows);
             reloadList(potV, tableColumns);
-            reloadList(potVOutput, tableColumns);
+            reloadList(potVFinal, tableColumns);
 
-            potUOutput[0] = 0;
+            potUFinal[0] = 0;
             potU[0] = 1;
 
             int passed = 0;
@@ -147,7 +166,7 @@ namespace Transport.CustomTable
                         {
                             if ((basisElements[i][j] != -1) && (potV[j] == 0))
                             {
-                                potVOutput[j] = basisElements[i][j] - potUOutput[i];
+                                potVFinal[j] = basisElements[i][j] - potUFinal[i];
                                 potV[j] = 1;
                             }
                         }
@@ -161,7 +180,7 @@ namespace Transport.CustomTable
                         {
                             if ((basisElements[j][i] != -1) && (potU[j] == 0))
                             {
-                                potUOutput[j] = basisElements[j][i] - potVOutput[i];
+                                potUFinal[j] = basisElements[j][i] - potVFinal[i];
                                 potU[j] = 1;
                             }
                         }
@@ -171,6 +190,23 @@ namespace Transport.CustomTable
                 passed++;
 
             }
+
+            reloadMatrix(relScore);
+
+            for (int i = 0; i < tableRows; i++)
+                for (int j = 0; j < tableColumns; j++)
+                    if (basisElements[i][j] == -1)
+                        relScore[i][j] = basisElements[i][j] - (potUFinal[i] - potVFinal[j]);
+
+            if (isOptimal())
+            {
+                // Вывод результатов
+            }
+            else
+            {
+                // Перерасчет
+            }
+
         }
     }
 }
