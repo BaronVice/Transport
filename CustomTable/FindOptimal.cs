@@ -12,6 +12,13 @@ namespace Transport.CustomTable
         private static List<int> elementsOfConsume = new List<int>();
         private static List<List<int>> elementsOfCosts = new List<List<int>>();
         private static List<List<int>> basisElements = new List<List<int>>();
+
+        private static List<int> potU = new List<int>();
+        private static List<int> potV = new List<int>();
+
+        private static List<int> potUOutput = new List<int>();
+        private static List<int> potVOutput = new List<int>();
+
         private static int tableColumns;
         private static int tableRows;
 
@@ -37,15 +44,32 @@ namespace Transport.CustomTable
             for (int i = 1; i < Costs.rows; i++)
             {
                 List<int> currentRow = new List<int>();
-                List<int> toBasis = new List<int>();
                 for (int j = 1; j < Costs.columns; j++)
-                {
                     currentRow.Add(int.Parse(Costs.grid[j, i].Value.ToString()));
-                    toBasis.Add(0);
-                }
-                basisElements.Add(toBasis);
+                
                 elementsOfCosts.Add(currentRow);
             }
+        }
+
+        private static void reloadList(List<int> l, int length)
+        {
+            l.Clear();
+            for (int i = 0; i < length; i++)
+                l.Add(0);
+        }
+
+        private static void reloadMatrix(List<List<int>> m)
+        {
+            m.Clear();
+            for (int i = 0; i < tableRows; i++)
+            {
+                List<int> row = new List<int>();
+                for (int j = 0; j < tableColumns; j++)
+                    row.Add(0);
+
+                m.Add(row);
+            }
+            
         }
 
         public static void findSolution()
@@ -78,7 +102,7 @@ namespace Transport.CustomTable
                     basisElements[minRowIndex][minColumnIndex] = elementsOfProduce[minRowIndex];
                     elementsOfConsume[minColumnIndex] -= elementsOfProduce[minRowIndex];
                     elementsOfProduce[minRowIndex] = 0;
-                    for (int i = 0; i < tableRows; i++)
+                    for (int i = 0; i < tableColumns; i++)
                         elementsOfCosts[minRowIndex][i] = currentMaximum + 1;
                 }
                 else
@@ -86,11 +110,66 @@ namespace Transport.CustomTable
                     basisElements[minRowIndex][minColumnIndex] = elementsOfConsume[minColumnIndex];
                     elementsOfProduce[minRowIndex] -= elementsOfConsume[minColumnIndex];
                     elementsOfConsume[minColumnIndex] = 0;
-                    for (int i = 0; i < tableColumns; i++)
+                    for (int i = 0; i < tableRows; i++)
                         elementsOfCosts[i][minColumnIndex] = currentMaximum + 1;
                 }
 
                 passed++;
+            }
+
+            for (int i = 0; i < tableRows; i++)
+                for (int j = 0; j < tableColumns; j++)
+                    if ((elementsOfProduce[i] != 0) && (elementsOfConsume[i] != 0))
+                    {
+                        basisElements[i][j] = elementsOfProduce[i];
+                        elementsOfProduce[i] -= elementsOfConsume[j];
+                    }
+        }
+
+        public static void findOptimalSolution()
+        {
+            reloadList(potU, tableRows);
+            reloadList(potUOutput, tableRows);
+            reloadList(potV, tableColumns);
+            reloadList(potVOutput, tableColumns);
+
+            potUOutput[0] = 0;
+            potU[0] = 1;
+
+            int passed = 0;
+            while (passed < tableColumns + tableRows)
+            {
+                for (int i = 0; i < tableRows; i++)
+                {
+                    if (potU[i] == 1)
+                    {
+                        for (int j = 0; j < tableColumns; j++)
+                        {
+                            if ((basisElements[i][j] != -1) && (potV[j] == 0))
+                            {
+                                potVOutput[j] = basisElements[i][j] - potUOutput[i];
+                                potV[j] = 1;
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < tableColumns; i++)
+                {
+                    if (potV[i] == 1)
+                    {
+                        for (int j = 0; j < tableRows; j++)
+                        {
+                            if ((basisElements[j][i] != -1) && (potU[j] == 0))
+                            {
+                                potUOutput[j] = basisElements[j][i] - potVOutput[i];
+                                potU[j] = 1;
+                            }
+                        }
+                    }
+                }
+
+                passed++;
+
             }
         }
     }

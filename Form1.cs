@@ -49,6 +49,7 @@ namespace Transport
             {
                 FindOptimal.fillSolutionTables(tableProduce, tableConsume, tableExpences);
                 FindOptimal.findSolution();
+                FindOptimal.findOptimalSolution();
             }
 
         }
